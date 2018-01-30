@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Youtube</title>
+      <link rel="stylesheet" href="youtube.css" type="text/css">
+      <!-- jquery load -->
+      <script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>   <!--  1번째 순서-->
+      <script type="text/javascript">
+
+        // jQuery(document).ready(function() {});
+        // $ ==> jquery
+        // $(document).ready(function() {});
+        // window.onload의 역할과 같다
+        // rendering 이 종료되면, callback function을 수행한다.
+        $().ready(function() {
+
+          function replaceVideoTitle() {
+              $("h3").text("jQuery")      ;// h3의 값을 바꾸기 위해서 text 안 따옴표에 글을 씀
+          }
+          replaceVideoTitle();
+
+            var h3Text = $("h3").text();
+
+            function replaceReadCount() {
+              $(".read-count").text("조회수 0건");
+
+            }
+            replaceReadCount();
+        // $("div").text("모두 바뀌어랴 얍");
+
+        // $("#wrapper").text("popcorn tree");
+       // var divText = $("모두바뀌어랴 얍").text();
+       // console.log(divText);
+            // alert(h3Text);
+
+            // 1. .base-post
+            // ion 아래있는 .uploader의 텍스트를 Tree Popcorn으로 바꾸기.
+            // 2. .video 아래에 있는 h3의 텍스트를 "안본지 오래되서"로 바꾸기.
+            function replaceText(){
+              // $(".base-position  > .uploader").text("Tree popcorn1");
+              // $(".base-position").find(".uploader").text("Tree popcorn2");
+              $(".base-position").children(".uploader").text("Tree popcorn3");
+
+                // 위 3개 똑같은 결과값 나옴
+            }
+            replaceText();
+
+
+            function replaceTextVideo(){
+              // $(".base-position > div > h3").text("안본지 오래돼서1");
+              // $(".video h3").text("안본지 오래돼서2");
+              // $(".video div > h3").text("안본지 오래되서3");
+              $(".video").find("div")
+                              .children("h3")
+                              .text("안본지 오래돼서") ;
+              // 이거쓰기 chaining pattern
+            }
+            replaceTextVideo();
+
+
+            var search = $('<h3>추가추가</h3>');
+            $('.wrapper').prepend(search);
+
+        });
+
+
+
+
+
+//       // html문서 내에 반드시 하나만 존재해야 함.
+//       window.onload = function() {
+//
+//         function sayHello(){
+//           console.log("안녕하세요?");
+//         }
+//         // Function Call
+//         sayHello();
+//
+//         function calcAndPrintNumbers() {
+//           var numberOne = 10;
+//           var numberTwo = 20;
+//           var result = numberOne + numberTwo;
+//           console.log(numberOne + "+" + numberTwo + "=" + result);
+//         }
+//         // Function Call
+//         calcAndPrintNumbers();
+//
+// // 리턴함수
+//         function getCalcNumbers() {
+//           var numberOne = 10;
+//           var numberTwo = 20;
+//           var result = numberOne + numberTwo;
+//           // return : Function의 종료와 동시에 값을 반환함.
+//           return result;
+//         }
+//         var result = getCalcNumbers();
+//         console.log(result);
+//
+//   // 매개변수
+//          function getCalcResult(numberOne, numberTwo){
+//            console.log(numberOne, numberTwo);
+//            console.log(arguments);
+//            var result = numberOne + numberTwo;
+//            return result;
+//          }
+//           var calcResult = getCalcResult(10, 60);
+//           console.log(calcResult);
+//           calcResult = getCalcResult(500, 1000);
+//           console.log(calcResult);
+//
+//           function addition (func){
+//             var result = func(10, 30);
+//             return result;
+//           }
+//
+//           var result = addition(function(numberOne, numberTwo) {
+//             return numberOne + numberTwo;
+//           });
+//           console.log(result);
+//
+//
+//
+//
+//           function createObject(){
+//             var object ={
+//               name : "Sol Han",
+//               job : "developer"
+//
+//             };
+//             object.dept="IT";
+//             return object;
+//           }
+//
+//           var object = createObject();
+//           console.log(object.name);
+//           console.log(object.job);
+//           console.dir(object);
+//
+//
+//       };
+      </script>
+      </head>
+    <!-- Wrapper Box-->
+    <body>
+    <div class="wrapper">
+
+      <!--Header Box-->
+      <div>Header</div>
+      <!-- Video Box-->
+      <div>
+        <!-- Viedo Info & Replies-->
+        <!-- Style = CSS (Cascade Style Sheet) -->
+        <div class="video box">   <!-- 한번에 두개 클래스로 정의 가능 ()스페이스) -->
+          <div class="base-position"> <!--기준점이므로 여기가 0-->
+            <div>
+              <!--영상-->
+              <video controls>
+                <source src="bossbaby.mp4"></source>
+              </video>
+              <!--제목-->
+              <h3>[MV] Urban Zakapa(어반자카파) _ When we were two(그때의 나, 그때의 우리)</h3>
+            </div>
+
+            <!--조회수-->
+            <p class="read-count box ">조회수 203.175회</p>
+            <!--좋아요, 싫어요, 공유, 즐겨찾기 등록, 기타버튼 지금부터 어렵다!!-->
+            <div class="box video-menu">
+              좋아요 2천 | 싫어요 74 | 공유 | 즐겨찾기 | 기타버튼
+            </div>
+
+            <!--게시자 정보-->
+            <div class="base-position">
+              <img src="https://yt3.ggpht.com/-HaYW23V9kzc/AAAAAAAAAAI/AAAAAAAAAAA/PtXGH3a9ArQ/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+              alt="아이콘"/>
+              <span class="uploader">팝콘트리</span>
+              <button class="subscribe">구독 3.6만 </botton>
+          </div>
+        </div>
+    </div><!--
+      Next Video & Other Video
+    --><div class="allnext-video box">Next Video & Other Video
+
+    <!--다음비디오-->
+        <div>
+      <!--다음 동영상-->
+            <div>다음동영상</div>
+              <div>
+                <div class="next-video box">
+                <video controls authoplay src="blackpink.mp4" style="width: 160px;  height: 100px;">
+                </div><!--
+        스페이스를 제거하기위해
+      --><div class="other-video box">
+                  <h4 style=" margin: 0px;">블랙핑크 (BLACKPINK) - 마지막처럼 (AS IF IT’S YOUR LAST) 교차편집 (stage mix)</h4>
+                    <p>Pt_Rockallads</p>
+                    <p>조회수 180만회</p>
+                </div>
+              </div>
+
+          <hr/> <!-- 한줄 생기게 -->
+          <div>
+            <div class="next-video box">
+            <video controls authoplay src="iu1.mp4" style="width: 160px;  height: 100px;">
+
+            </div><!--
+          스페이스를 제거하기위해
+        --><div class="other-video box">
+              <h4 style=" margin: 0px;">[MV] IU(아이유) _ Through the Night(밤편지)</h4>
+                <p>Pt_Rockallads</p>
+                <p>조회수 180만회</p>
+            </div>
+          </div>
+          <div>
+            <div class=" next-video box">
+            <video controls authoplay src="iu2.mp4" style="width: 160px;  height: 100px;">
+            </div><!--
+    스페이스를 제거하기위해
+  --><div class="other-video box">
+              <h4 style=" margin: 0px;">[Special Clip] IU(아이유)_Dear Name(이름에게)</h4>
+                <p>Pt_Rockallads</p>
+                <p>조회수 180만회</p>
+            </div>
+          </div>
+          <div>
+            <div class="next-video box">
+              <video controls autoplay src="iu3.mp4" style="width: 160px; height: 100px;">
+            <img src="poster4.png" alt="포스터4" style="width: 160px;" />
+            </div><!--
+    스페이스를 제거하기위해
+  --><div class="other-video box">
+              <h4 style=" margin: 0px;">(영상)171225 아이유&유희열 - '내사랑 내곁에' SBS가요대전 라이브</h4>
+                <p>Pt_Rockallads</p>
+                <p>조회수 180만회</p>
+            </div>
+          </div>
+
+
+  </div>
+
+</div>
+</div>
+
+</div>
+  </body>
+</html>
