@@ -1,65 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="./layout.css" />
+    <link rel="stylesheet" type="text/css" href="./layout-vacation.css" />
     <title>Vacation Packages</title>
     <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
 
-    $(document).ready(function() {
+    $().ready(function() {
+      $(".quantity").keyup(function() {
+        var price = $(this).closest(".vacation").data("price");
+        var quantity = $(this).val();
+        var amount = price * quantity;
 
-      $('button').on('click', function() {
-        var price = $('<p>from $399.99</p>');
-        // $('.vacation').append(price);
-        $(this).closest('.vacation').after(price);
-        $(this).remove();
+        $("#total").text(amount);
       });
+      $.post("http://localhost:8080/index.html", {}, function(response) {
+        $("#naver").html(response);
+      });
+
     });
 
 
     </script>
-
   </head>
   <body>
+    <div id="naver"></div>
     <fieldset>
       <legend>Vacations</legend>
-      <h1>Vacation Packages</h1>
-      <h3>jQuery Travels</h3>
+      <h1>jQuery Travels - Trip Planner</h1>
+      <h2>Packages</h2>
+
       <div id="vacations">
-        <ul>
-          <li class='vacation'>
-            <h2>Hawaiian Vacation</h2>
-            <p>Comments on this deal:</p>
-            <ul class="comments">
-              <li>"Amazing Deal!"</li>
-              <li>"Can't wait to take this trip!"</li>
-            </ul>
-            <button>GET PRICE</button>
-          </li>
-        </ul>
-        <ul>
-          <li class='vacation'>
-            <h2>Olando</h2>
-            <p>Comments on this deal:</p>
-            <ul class="comments">
-              <li>There aren't any comments on this deal yet.</li>
-            </ul>
-            <button>GET PRICE</button>
-          </li>
-        </ul>
-        <ul>
-          <li class='vacation'>
-            <h2>Visit Japan</h2>
-            <p>Comments on this deal:</p>
-            <ul class="comments">
-              <li>"Never been, but can't wait!</li>
-              <li>&nbsp;</li>
-            </ul>
-            <button>GET PRICE</button>
-          </li>
-        </ul>
+        <div class="vacation" data-price="399.99">
+          <h2>Hawaiian Vacation</h2>
+          <p>$399.99 per ticket</p>
+          <p>
+            Tickets:
+            <input type="number" class="quantity" value="1" />
+          </p>
+        </div>
       </div>
-      <p class="call">Call us at 555-2593 to make a reservation today!</p>
+      <p class="vacationFee">
+        Total Price: $<span id="total">399.99</span>
+      </p>
+      <p class="call">Call us at 555-25937 to make a reservation today!</p>
     </fieldset>
   </body>
 </html>
